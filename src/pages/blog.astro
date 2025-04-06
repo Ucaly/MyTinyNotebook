@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+import BlogCard from "../components/BlogCard.astro";
+// const allPosts = Object.values(import.meta.glob('./posts/*.md', {eager: true}))
+const allPosts = await getCollection('blog');
+const pageTitle = "Notes";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section class="m-4 px-4 md:m-6 lg:flex lg:gap-12 lg:mt-12 lg:px-10 md:px-10">
+  <div >
+        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+            <!-- {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)} -->
+            {
+                allPosts.map((post) => (
+                  <BlogCard url={`/posts/${post.id}/`} title={post.data.title} category={post.data.category} date={post.data.date.toLocaleDateString()}/>
+                ))
+              }
+
+        </ul>
+  </div>
+</section>
+</BaseLayout>

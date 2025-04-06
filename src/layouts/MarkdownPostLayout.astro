@@ -1,0 +1,47 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Prose from "../components/Prose.astro";
+import { Image } from "astro:assets";
+const { frontmatter } = Astro.props;
+import '../styles/global.css';
+const pageTitle  = "Note" 
+---
+<BaseLayout pageTitle={pageTitle}>
+    <!-- <sction class="p-4 m-4"> -->
+    <!-- <p><em>{frontmatter.description}</em></p> -->
+    <!-- <p>Published on: {frontmatter.pubDate.toString().slice(0,10)}</p> -->
+    <div class="flex justify-center gap-10 bg-white">
+    <div class="m-4">
+    <h2 class="text-xl md:text-2xl xl:text-3xl md:ml-4 text-sky-900 ">{frontmatter.title}</h2>
+    <p class="md:ml-4 mt-3">{frontmatter.date.toLocaleDateString()}</p>
+    <div class="md:flex mt-4">
+      {frontmatter.tags.map((tag: string) => (
+      <p><a class="px-1.5 sm:text-xs md:ml-4 md:mb-3 md:px-3 md:py-1.5 border-2 border-dotted border-slate-300 text-sm bg-sky-100 rounded-xl" href={`/tags/${tag}`}>{tag}</a></p>
+      ))}
+  </div>
+    </div>
+    <img src={frontmatter.image.src} alt={frontmatter.alt} class="hidden sm:block sm:w-80 md:w-120"/>
+  </div>
+    <!-- <div class="flex flex-wrap justify-center m-4">
+        {frontmatter.tags.map((tag: string) => (
+        <p><a class="m-4 px-3 py-2 border-2 border-dotted border-slate-300 text-sm bg-sky-200 rounded-xl" href={`/tags/${tag}`}>{tag}</a></p>
+        ))}
+    </div> -->
+  <!-- </sction> -->
+  <div class="m-10 sm:m-12 md:mx-30 lg:mx-40">
+    <Prose>
+    <slot />
+  </Prose>
+  </div>
+</BaseLayout>
+<!-- <style is:global>
+
+    img {
+      width: 50%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      padding: 30px;
+    }
+  
+</style> -->

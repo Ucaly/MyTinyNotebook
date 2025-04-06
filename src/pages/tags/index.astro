@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+const allPosts = await getCollection('blog');
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const pageTitle = "Tag Index";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <section class="m-4 px-4 md:m-10 lg:flex lg:gap-12 lg:m-12 lg:px-10 md:px-10">
+    <div class="flex flex-wrap">
+      {tags.map((tag) => (
+        <p class="m-2"><a href={`/tags/${tag}`} class="px-2 py-1 sm:text-xs md:my-5 border-2 border-dotted border-slate-300 text-sm bg-sky-100 rounded-xl hover:bg-sky-300 lg:m-10">{tag}</a></p>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+<!-- <style>
+    a {
+      color: #00539F;
+    }
+  
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .tag {
+      margin: 0.25em;
+      border: dotted 1px #a1a1a1;
+      border-radius: .5em;
+      padding: .5em 1em;
+      font-size: 1.15em;
+      background-color: #F8FCFD;
+    }
+</style> -->

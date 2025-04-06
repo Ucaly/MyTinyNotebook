@@ -1,0 +1,15 @@
+---
+const { title, category, url, date } = Astro.props;
+import calendarIcon from '../assets/calendar_icon.svg';
+---
+
+<div class="gap-x-4 rounded-xl bg-white p-6  shadow-lg outline outline-black/5 space-y-2 group md:p-4 sm:p-2">
+    <span class="text-sm"><img src={calendarIcon.src} class="w-7 inline pr-1"/>{date}</span>
+    <h2 class="text-xl mt-2 font-semibold text-slate-700 group-hover:block md:text-base sm:text-sm">{title}</h2>
+        <div class="w-full flex group-hover:justify-between">
+        <p class="text-sm sm:text-xs border-slate-300 rounded-l-lg rounded-r-lg border-2 inline-block px-1">
+            {category}
+        </p>
+        <a href={url} class="text-sky-600 text-sm hidden group-hover:inline-block">ノートを読む→</a>
+    </div>
+</div>

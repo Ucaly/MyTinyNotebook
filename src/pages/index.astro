@@ -1,0 +1,45 @@
+---
+import { addIssueToContext, bigint } from "astro:schema";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogCard from '../components/BlogCard.astro';
+const pageTitle = "Recent Notes";
+import { getCollection } from "astro:content";
+const notes = await getCollection('blog');
+import About from "../components/About.astro";
+
+const sortedNotes = notes.sort((a, b) => (b.data.date.getTime()) - (a.data.date.getTime()));
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<!-- <h2 class="m-2 md:m-6 lg:gap-12 lg:mt-2">Welcome to my tiny notebook</h2> -->
+	<div class="flex justify-around mx-4">
+		
+	<section class="m-4 md:m-6 lg:flex lg:gap-12 lg:mt-12">
+		<div >
+			  <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+				  <!-- {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)} -->
+				  {
+					  (sortedNotes.slice(0, 4)).map((post) => (
+						<BlogCard url={`/posts/${post.id}/`} title={post.data.title} category={post.data.category} date={post.data.date.toLocaleDateString()}/>
+					  ))
+					}
+	  
+			  </ul>
+		</div>
+	  </section>
+	<div class="hidden md:block ">
+		<About />
+	</div>
+	</div>
+	<script>
+		document.getElementById('#hamburger')?.addEventListener('click', () => {
+		  console.log('clicked');
+		  const navLinks = document.querySelector('#navs');
+		  if(navLinks)
+			navLinks.className = navLinks.className === 'block' ? 'hidden' : 'block';
+			  
+			});
+	  </script>
+</BaseLayout>
+
