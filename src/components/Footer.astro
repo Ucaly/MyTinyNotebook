@@ -1,0 +1,14 @@
+---
+const platform = "github";
+const username = "Ucaly";
+import Social from "./Social.astro";
+import xIcon from '../assets/x_logo_icon_no_border.svg';
+import instagramIcon from '../assets/instagram_icon.svg';
+---
+
+<footer class="flex justify-center">
+  <div class="m-4 flex justify-items-center gap-2 mt-2 md:m-6 lg:gap-12 lg:mt-12">
+    <Social platform="X" username="computer_mama" imgSrc={xIcon.src}/>
+    <Social platform="instagram" username="yo.neko.3" imgSrc={instagramIcon.src}/>
+    </div>
+</footer>

@@ -1,0 +1,30 @@
+---
+import Navigation from './Navigation.astro';
+import { Image } from 'astro:assets';
+import Hamburger from './Hamburger.astro';
+import ThemeIcon from './ThemeIcon.astro';
+import noteIcon from '../assets/notes/love_notebook_icon.svg';
+---
+<header class="px-2 py-4 flex justify-between items-center sm:px-4 md:px-8 lg:px-12">
+  <div class="flex gap-2">
+  <div class="w-15">
+  <Image src={noteIcon} alt="notebook" />
+  </div>
+  <p class="font-indieflower texi-center text-3xl text-sky-600 sm:text-4xl md:text-5xl lg:text-6xl md:min-w-80">My Notebook</p>
+  </div>
+  <nav id="nav-links" >
+      <Navigation />
+  </nav>
+  <!-- <nav class="md:hidden" id="hamburger">
+    <Hamburger />
+  </nav> -->
+  <!-- <script>
+    document.getElementById('#hamburger')?.addEventListener('click', () => {
+      console.log('clicked');
+      const navLinks = document.querySelector('#navs');
+      if(navLinks)
+        navLinks.className = navLinks.className === 'block' ? 'hidden' : 'block';
+          
+        });
+  </script> -->
+</header>

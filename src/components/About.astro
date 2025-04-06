@@ -1,0 +1,18 @@
+---
+import Image from 'astro/components/Image.astro';
+import coffeeCupImage from '../assets/coffee_cup_icon.svg';
+---
+
+<div class="justify-center w-3xs">
+    <h4 class="text-slate-600 px-0 py-1 text-center">このサイトについて</h3>
+    <Image src={coffeeCupImage} width={50} class="my-icon" alt="test"/>
+    <p class="text-slate-500">記憶力が相当あやしくなったので後で見返せるようにノートのつもりで記録しています。アメリカ生活、旅行、テック関係など何でもあり。</p>
+</div>
+
+<style>
+    .my-icon {
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+</style>

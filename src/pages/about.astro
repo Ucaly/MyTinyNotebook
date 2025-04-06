@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "About Me";
+
+const identity = {
+    firstName: 'Yo.neko',
+    country: 'US',
+    occupation: '',
+    hobbies: ['gardening', 'movie watching', 'kpop'],
+};
+
+---
+
+    <BaseLayout pageTitle={pageTitle}>
+        <div class="m-8 md:m-20 md:text-lg">
+        <p>訪問してくださってありがとうございます。私はアメリカで長らく働いてきた普通の日本人です。生活の記録とボケ防止をかねて気が向いた時にノートにメモするような感覚で書いています。</p>
+        <p class="mt-4">東海岸、中西部にも住んだことがありますが、もうずっとカリフォルニア州に住んでいます。</p>
+        <p class="mt-4">目の前にせまった老後をどこでどのように過ごすかというのが今一番の関心事です。</p>
+        <p class="mt-4">旅の記録をメインにしたいと思っていますが、仕事関係ネタやたわいもない雑感も時折はさみます。</p>
+        </div>
+    </BaseLayout>
+
